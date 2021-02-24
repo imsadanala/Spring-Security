@@ -1,4 +1,4 @@
-package com.ss.repository;
+package com.ss.service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,5 +34,10 @@ public class UserService {
 
 	public User findById(Integer id) {
 		return usersList.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
+	}
+
+	public List<User> deleteById(Integer userId) {
+		usersList.removeIf(user -> user.getId().equals(userId));
+		return usersList;
 	}
 }
