@@ -10,12 +10,12 @@ import com.ss.version.dto.PersonV2;
 @RestController
 public class VersionController {
 
-	@GetMapping(value = "v1/person")
+	@GetMapping(value = "/person", params = "version=1")
 	public PersonV1 personV1() {
 		return new PersonV1("Suresh Sadanala");
 	}
 
-	@GetMapping(value = "v2/person")
+	@GetMapping(value = "person", params = "version=2")
 	public PersonV2 personV2() {
 		return new PersonV2(new Name("Suresh", "Sadanala"));
 	}
