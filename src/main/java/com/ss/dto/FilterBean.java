@@ -1,9 +1,13 @@
 package com.ss.dto;
 
+import org.hibernate.annotations.Filter;
+
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //@JsonIgnoreProperties(value = { "field1" })
+@JsonFilter(value = "FilterBean")
 public class FilterBean {
 
 	private String field1;

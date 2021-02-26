@@ -16,19 +16,25 @@ import com.ss.dto.FilterBean;
 public class FilterController {
 
 	@GetMapping(value = "/filter")
-	public FilterBean getBean() {
+	public MappingJacksonValue getBean() {
 		FilterBean filterBean = new FilterBean("value1", "value2", "value3");
 		MappingJacksonValue mappingJackson = new MappingJacksonValue(filterBean);
 		SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter.filterOutAllExcept("field1",
 				"field2");
-		FilterProvider filters = new SimpleFilterProvider().addFilter("", simpleBeanPropertyFilter);
+		FilterProvider filters = new SimpleFilterProvider().addFilter("FilterBean", simpleBeanPropertyFilter);
 		mappingJackson.setFilters(filters);
-		return filterBean;
+		return mappingJackson;
 	}
 
 	@GetMapping(value = "/filters")
-	public List<FilterBean> getBeanList() {
-		return Arrays.asList(new FilterBean("value1", "value2", "value3"),
+	public MappingJacksonValue getBeanList() {
+		List<FilterBean> beanList = Arrays.asList(new FilterBean("value1", "value2", "value3"),
 				new FilterBean("value4", "value5", "value6"));
+
+		SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter.filterOutAllExcept("field2");
+		FilterProvider filters = new SimpleFilterProvider().addFilter("FilterBean", simpleBeanPropertyFilter);
+		MappingJacksonValue mappingJackson = new MappingJacksonValue(beanList);
+		mappingJackson.setFilters(filters);
+		return mappingJackson;
 	}
 }
