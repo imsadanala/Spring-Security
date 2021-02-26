@@ -5,6 +5,10 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "represents the user details")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 7004441380263390246L;
@@ -12,10 +16,11 @@ public class User implements Serializable {
 	private Integer id;
 
 	@Size(min = 2)
+	@ApiModelProperty(notes = "name atleast have 2 characters")
 	private String name;
 
+	@ApiModelProperty(notes = "Birthday can't be future")
 	private Date birthDay;
-	
 
 	public User(Integer id, String name, Date birthDay) {
 		super();
