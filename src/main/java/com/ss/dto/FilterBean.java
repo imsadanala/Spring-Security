@@ -3,11 +3,11 @@ package com.ss.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = { "field1" })
+//@JsonIgnoreProperties(value = { "field1" })
 public class FilterBean {
 
 	private String field1;
-	@JsonIgnore
+	//@JsonIgnore
 	private String field2;
 	private String field3;
 
