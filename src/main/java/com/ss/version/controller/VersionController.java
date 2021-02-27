@@ -19,4 +19,14 @@ public class VersionController {
 	public PersonV2 personV2() {
 		return new PersonV2(new Name("Suresh", "Sadanala"));
 	}
+
+	@GetMapping(value = "/person", headers = "API-VERSION=1")
+	public PersonV1 personH1() {
+		return new PersonV1("Suresh Sadanala");
+	}
+
+	@GetMapping(value = "/person", headers = "API-VERSION=2")
+	public PersonV2 personH2() {
+		return new PersonV2(new Name("Suresh", "Sadanala"));
+	}
 }
